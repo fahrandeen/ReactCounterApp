@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  const incrementCount = (count) => {
+    setCount(count + 1);
+  };
+  const subtract = (count) => {
+    setCount(count - 1);
+  };
+  const reset = () => {
+    setCount(0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="container-fluid">
+      <div className="container text-center">
+        <h1>React Counter App</h1>
+        <div className="numberCircle">
+          <p>{count}</p>
+        </div>
+        <div className="buttons">
+          <button className="btn btn-warning" onClick={() => subtract(count)}>
+            - Subtract
+          </button>
+          <button className="btn btn-warning" onClick={() => reset()}>
+            ! Reset
+          </button>
+          <button
+            className="btn btn-warning"
+            onClick={() => incrementCount(count)}
+          >
+            + Add
+          </button>
+        </div>
+      </div>
+    </section>
   );
 }
 
